@@ -1,5 +1,6 @@
 package com.mm.utils.rebuild;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserRebuild {
     private String id;
@@ -15,6 +16,7 @@ public class UserRebuild {
     /**
      * 密码
      */
+    @JsonIgnore
     private String password;
 
     /**

@@ -16,17 +16,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class MvcConfigure extends WebMvcConfigurerAdapter{
 	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-/*		//资源映射, /**访问所有的资源
-		registry.addResourceHandler("/**")
-		//资源路径, 映射目录file:本地目录
-		.addResourceLocations("classpath:/META-INF/resources/")
-		.addResourceLocations("file:C:/mm_video_workspace/");*/
-		System.out.println("文件映射启动1");
-		registry.addResourceHandler("/**")
-		.addResourceLocations("classpath:/META-INF/resources/")
+//		registry.addResourceHandler("/uploads/**")
+		registry.addResourceHandler("/**/")
+				.addResourceLocations("classpath:/META-INF/resources/")
 				.addResourceLocations("file:C:/mm_video_workspace/");
-		System.out.println("文件映射启动2");
 	}
 }

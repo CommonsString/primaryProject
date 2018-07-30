@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mm.entity.Users;
 import com.mm.service.UserService;
 import com.mm.utils.JSONResult;
+import com.mm.utils.rebuild.UserRebuild;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -102,4 +104,22 @@ public class UserOtherController extends BaseController{
 	}
 	
 	
+	/**
+     *  功能描述：用户头加载信息
+     */
+	@ApiOperation(value = "用户加载信息", notes = "用户加载信息接口")
+	@ApiImplicitParam(name = "userId", value = "用户Id", required = true, 
+	dataType = "String", paramType = "query") //query直接根参数自动完成映射赋值
+	@PostMapping("/onLoadInfo")
+	public JSONResult onLoadInfo(String userId){	
+		//参数检查
+		if(StringUtils.isBlank(userId)){
+			return JSONResult.errorMsg("上传出错,请重试！");
+		}
+		Users user = this.userService.findUserInfo(userId);
+		UserRebuild rebuild = new UserRebuild();
+		//复制属性的值
+		BeanUtils.copyProperties(user, rebuild);
+		return JSONResult.ok(rebuild);
+	}
 }

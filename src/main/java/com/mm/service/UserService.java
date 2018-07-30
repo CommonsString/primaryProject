@@ -27,5 +27,11 @@ public interface UserService {
 	 * @上传头像--用户上传头像
 	 */
 	public void updateUserInfo(Users user);
+
+
+	/**
+	 * @用户其他接口--用户加载信息
+	 */
+	public Users findUserInfo(String userId);
 	
 }

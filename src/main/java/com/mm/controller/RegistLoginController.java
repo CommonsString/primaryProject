@@ -62,7 +62,6 @@ public class RegistLoginController extends BaseController{
 		}
 		UserRebuild rebuild = setRedisSessionToken(user);
 		//密码置空
-		rebuild.setPassword("");
 		return JSONResult.ok(rebuild);
 	}
 	
@@ -102,7 +101,6 @@ public class RegistLoginController extends BaseController{
 		if(loginUser == null){
 			return JSONResult.errorMsg("用户名或密码错误, 请重试！");
 		}
-		loginUser.setPassword("");
 		//返回rebuild
 		UserRebuild rebuild = setRedisSessionToken(loginUser);
 		return JSONResult.ok(rebuild);

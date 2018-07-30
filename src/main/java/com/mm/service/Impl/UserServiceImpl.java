@@ -77,5 +77,17 @@ public class UserServiceImpl implements UserService{
 		//更新
 		this.userMapper.updateByExampleSelective(user, userLoginExample);
 	}
+
+
+	/**
+	 * @用户其他接口--用户加载信息
+	 */
+	@Override
+	public Users findUserInfo(String userId) {
+		Example userLoginExample = new Example(Users.class);
+		Criteria criteria = userLoginExample.createCriteria();
+		criteria.andEqualTo("id", userId);
+		return this.userMapper.selectOneByExample(userLoginExample);
+	}
 	
 }

@@ -11,7 +11,6 @@ public class BaseController {
 	 */
 	@Autowired
 	public RedisOperator redis;
-
 	/**
 	 * @redis session-key
 	 */
