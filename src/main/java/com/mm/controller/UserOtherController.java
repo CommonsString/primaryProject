@@ -47,7 +47,7 @@ public class UserOtherController extends BaseController{
 	@ApiImplicitParam(name = "userId", value = "用户Id", required = true, 
 	dataType = "String", paramType = "query") //query直接根参数自动完成映射赋值
 	@PostMapping("/uploadFace")
-	public JSONResult logout(String userId, @RequestParam("file") MultipartFile[] files) throws IOException{
+	public JSONResult upload(String userId, @RequestParam("file") MultipartFile[] files) throws IOException{
 		if(StringUtils.isBlank(userId)){
 			return JSONResult.errorMsg("上传出错,请重试！");
 		}
