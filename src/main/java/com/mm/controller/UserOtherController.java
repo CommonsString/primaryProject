@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
  * 登录/注册
  * @author commonsstring@gmail.com
  */
-@Api(value = "用户相关业务", tags = {"用户相关业务"})
+@Api(value = "用户相关业务", tags = {"用户相关业务,头像上传,预加载信息"})
 @RestController
 @RequestMapping("/api/v1/userother")
 public class UserOtherController extends BaseController{
